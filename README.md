@@ -10,7 +10,7 @@ Dans cette première partie, nous avons réalisé l’analyse métier d’un sys
 
 ---
 
-# 📊 Réponse – Projet Base de Données - Premier League de Football Anglaise
+# 📊 Réponse au (PROMPT-IAG.md) – Projet Base de Données - Premier League de Football Anglaise
 
 ---
 
