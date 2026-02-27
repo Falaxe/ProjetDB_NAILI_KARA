@@ -5,7 +5,7 @@ Walid NAILI
 ##  Partie 1 
 
 # 📝 Résumé de la Partie 1
-
+Dans cette première partie, nous avons réalisé l’analyse métier d’un système de gestion d’une saison de Premier League en appliquant la méthode MERISE. Nous avons défini les règles de gestion du championnat et construit un dictionnaire de données structuré (type et taille des données). À partir de cette analyse, nous avons ensuite conçu le Modèle Conceptuel de Données (MCD) intégrant une spécialisation, une association n-aire, une association récursive et une association porteuse d’attributs, tout en respectant les principes de normalisation (3FN).
 
 ---
 
