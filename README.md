@@ -21,6 +21,7 @@ Dans cette première partie, nous avons réalisé l’analyse métier d’un sys
 - Une personne peut exercer un rôle de **joueur**, **entraîneur** ou **arbitre**.
 
 - Un **joueur** possède un poste et un numéro de maillot.
+- - Un **entraineur** possède un grade.
 - Un **arbitre** possède un grade.
 
 - Un joueur peut être **capitaine** d’autres joueurs sur une période donnée (date_debut, date_fin).
