@@ -68,6 +68,7 @@ Dans cette première partie, nous avons réalisé l’analyse métier d’un sys
 | Nationalité | VARCHAR | 50 |
 | Poste joueur | VARCHAR | 20 |
 | Numéro maillot | INT | 2 |
+| Grade entraineur | VARCHAR | 30 |
 | Grade arbitre | VARCHAR | 30 |
 | Identifiant club | INT | 10 |
 | Nom club | VARCHAR | 60 |
