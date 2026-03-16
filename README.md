@@ -5,7 +5,6 @@ Walid NAILI
 ##  Partie 1 
 
 # 📝 Résumé de la Partie 1
-
 Dans cette première partie, nous avons réalisé l’analyse métier d’un système de gestion d’une saison de Premier League en appliquant la méthode MERISE. Nous avons défini les règles de gestion du championnat et construit un dictionnaire de données structuré (type et taille des données). À partir de cette analyse, nous avons ensuite conçu le Modèle Conceptuel de Données (MCD) intégrant une spécialisation, une association n-aire, une association récursive et une association porteuse d’attributs, tout en respectant les principes de normalisation (3FN).
 
 ---
@@ -21,7 +20,7 @@ Dans cette première partie, nous avons réalisé l’analyse métier d’un sys
 - Une personne peut exercer un rôle de **joueur**, **entraîneur** ou **arbitre**.
 
 - Un **joueur** possède un poste et un numéro de maillot.
-- - Un **entraineur** possède un grade.
+- Un **entraineur** possède un grade.
 - Un **arbitre** possède un grade.
 
 - Un joueur peut être **capitaine** d’autres joueurs sur une période donnée (date_debut, date_fin).
@@ -100,3 +99,135 @@ Dans cette première partie, nous avons réalisé l’analyse métier d’un sys
 
 # Image de notre MCD 
 ![MCD-IMAGE](image.png)
+
+##  Partie 2 
+
+# MCD -> MLD
+
+PERSONNE = (id_personne INT, nom VARCHAR(50), prenom VARCHAR(50), date_naissance DATE, nationalite VARCHAR(50));
+
+Stade = (id_stade INT, nom_stade VARCHAR(60), adresse VARCHAR(80), capacite INT);
+
+Saison = (id_saison INT, annee_debut INT, annee_fin INT);
+
+Joueur = (id_personne INT, poste VARCHAR(20), numero_maillot INT);
+
+Entraineur = (id_personne INT, grade VARCHAR(30));
+
+Arbitre = (id_personne INT, grade VARCHAR(30));
+
+Club = (id_club INT, nom_club VARCHAR(50), ville VARCHAR(60), #id_stade);
+
+Match_ = (
+    id_match INT,
+    date_heure DATETIME,
+    journee INT,
+    score_domicile INT,
+    score_exterieur INT,
+    #id_club_domicile,
+    #id_club_exterieur,
+    #id_saison,
+    #id_stade
+);
+
+ARBITRER = (
+    #id_match,
+    #id_personne,
+    role_arbitrage VARCHAR(30)
+);
+
+CONTRAT = (
+    #id_personne,
+    #id_club,
+    date_debut DATE,
+    date_fin DATE,
+    salaire INT
+);
+
+PARTICIPER = (
+    #id_club,
+    #id_match,
+    #id_personne,
+    titulaire BOOLEAN,
+    minutes_jouees INT,
+    nombre_buts INT
+);
+
+EST_CAPITAINE_DE = (
+    #id_personne_encadre,
+    date_debut DATE,
+    date_fin DATE,
+    #id_personne_capitaine
+);
+
+
+---
+
+# 🎯 Scénarios d’utilisation
+
+## Scénario 1 : analyste sportif TV
+
+La base de données est utilisée par un **analyste sportif** travaillant pour une chaîne de télévision qui suit la **Premier League anglaise**.
+
+Son rôle est de produire des statistiques avant et après les matchs.
+
+Il doit notamment :
+
+- consulter les résultats des matchs
+- identifier les joueurs ayant marqué
+- comparer les performances des clubs
+- connaître les arbitres ayant officié
+- analyser le temps de jeu des joueurs.
+
+Les requêtes SQL permettent donc d’extraire ces informations pour les émissions sportives.
+
+---
+
+## Scénario 2 : cellule de recrutement d’un club
+
+La base de données peut également être utilisée par un **recruteur d’un club de Premier League**.
+
+Son objectif est d’identifier les joueurs intéressants à suivre selon :
+
+- leur nombre de buts
+- leur temps de jeu
+- leur régularité dans les matchs.
+
+Il peut ainsi :
+
+- repérer les joueurs les plus performants
+- identifier les titulaires réguliers
+- comparer les joueurs d’un même club
+- analyser les clubs qui utilisent le plus certains joueurs.
+
+Ces analyses peuvent servir à **la prise de décision sportive et au recrutement**.
+
+---
+
+# 📁 Structure du projet
+
+```
+ProjetDB_NAILI_KARA
+│
+├── .gitignore
+├── 1_creation.sql
+├── 2_contraintes.sql
+├── 3_insertion.sql
+├── 4_interrogation.sql
+├── image.png
+└── MCD-Projet.loo
+└── PROMPT-IAG-insert.md
+└── PROMPT-IAG.md
+└── README.md
+```
+
+- **1_creation.sql** : création des tables et des clés étrangères  
+- **2_contraintes.sql** : ajout des contraintes de validation/règles métier  
+- **3_insertion.sql** : insertion des données dans la base  
+- **4_interrogation.sql** : requêtes SQL d’interrogation et d’analyse  
+
+- **MCD-Projet.loo** : modèle conceptuel réalisé avec le logiciel Looping  
+- **image.png** : image exportée du MCD  
+
+- **PROMPT-IAG.md** : prompt utilisé pour générer les règles métier et le modèle conceptuel  
+- **PROMPT-IAG-insert.md** : prompt utilisé pour générer les requêtes d’insertion de données
